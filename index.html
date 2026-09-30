@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PhucAIPN - Dịch vụ Video AI</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:Arial,sans-serif;
+  background:#090b10;
+  color:#fff;
+  line-height:1.6
+}
+a{text-decoration:none;color:inherit}
+
+header{
+  position:sticky;
+  top:0;
+  z-index:10;
+  background:rgba(9,11,16,.92);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid #252936
+}
+
+.nav{
+  max-width:1150px;
+  margin:auto;
+  padding:18px 20px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between
+}
+
+.logo{
+  font-size:24px;
+  font-weight:800;
+}
+.logo span{color:#5cc8ff}
+
+nav{
+  display:flex;
+  gap:25px;
+  color:#c8ccd5
+}
+
+nav a:hover{color:#61caff}
+
+.hero{
+  max-width:1150px;
+  margin:auto;
+  padding:90px 20px 70px;
+  text-align:center
+}
+
+.badge{
+  display:inline-block;
+  padding:7px 14px;
+  border:1px solid #315d78;
+  border-radius:30px;
+  color:#65caff;
+  margin-bottom:20px;
+  background:#0d1c27
+}
+
+.hero h1{
+  font-size:clamp(40px,7vw,72px);
+  line-height:1.05;
+  margin-bottom:22px
+}
+
+.hero h1 span{
+  color:#59c8ff
+}
+
+.hero p{
+  max-width:700px;
+  margin:auto;
+  color:#aeb4c0;
+  font-size:18px
+}
+
+.buttons{
+  display:flex;
+  justify-content:center;
+  gap:14px;
+  margin-top:32px;
+  flex-wrap:wrap
+}
+
+.btn{
+  padding:14px 24px;
+  border-radius:12px;
+  background:#5ac8ff;
+  color:#061018;
+  font-weight:700
+}
+
+.btn.alt{
+  background:#151922;
+  color:white;
+  border:1px solid #303642
+}
+
+section{
+  max-width:1150px;
+  margin:auto;
+  padding:65px 20px
+}
+
+.title{
+  text-align:center;
+  margin-bottom:35px
+}
+
+.title h2{font-size:34px}
+.title p{color:#9299a8;margin-top:8px}
+
+.filters{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-bottom:28px
+}
+
+.filter{
+  border:1px solid #303642;
+  background:#11151d;
+  color:#cbd0da;
+  padding:9px 16px;
+  border-radius:25px;
+  cursor:pointer
+}
+
+.filter.active{
+  background:#5ac8ff;
+  color:#061018;
+  border-color:#5ac8ff
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px
+}
+
+.card{
+  background:#11151d;
+  border:1px solid #252b36;
+  border-radius:18px;
+  overflow:hidden
+}
+
+.thumb{
+  height:190px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(135deg,#15283a,#11131b);
+  font-size:50px
+}
+
+.card-body{padding:20px}
+.card-body h3{margin-bottom:7px}
+.card-body p{color:#949baa;font-size:14px}
+
+.services{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:16px
+}
+
+.service{
+  padding:25px;
+  background:#11151d;
+  border:1px solid #252b36;
+  border-radius:16px
+}
+
+.service .icon{font-size:30px;margin-bottom:12px}
+.service p{color:#9299a8;font-size:14px;margin-top:7px}
+
+.prices{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px
+}
+
+.price{
+  background:#11151d;
+  border:1px solid #303642;
+  border-radius:18px;
+  padding:30px
+}
+
+.price.featured{
+  border-color:#5ac8ff;
+  box-shadow:0 0 25px rgba(90,200,255,.1)
+}
+
+.price h3{font-size:21px}
+.price .money{
+  font-size:35px;
+  font-weight:800;
+  margin:15px 0
+}
+.price ul{
+  list-style:none;
+  color:#aeb4c0;
+  margin-bottom:22px
+}
+.price li{margin:8px 0}
+
+.contact{
+  max-width:700px;
+  margin:auto;
+  background:#11151d;
+  border:1px solid #252b36;
+  border-radius:20px;
+  padding:28px
+}
+
+input,textarea,select{
+  width:100%;
+  padding:14px;
+  margin:7px 0 15px;
+  border-radius:10px;
+  border:1px solid #303642;
+  background:#090b10;
+  color:white;
+  font-size:15px
+}
+
+textarea{min-height:130px;resize:vertical}
+
+button.submit{
+  width:100%;
+  border:0;
+  padding:15px;
+  border-radius:11px;
+  background:#5ac8ff;
+  font-weight:800;
+  font-size:16px;
+  cursor:pointer
+}
+
+footer{
+  border-top:1px solid #252936;
+  padding:30px 20px;
+  text-align:center;
+  color:#777f8d
+}
+
+@media(max-width:800px){
+  nav{display:none}
+  .grid{grid-template-columns:1fr}
+  .services{grid-template-columns:1fr 1fr}
+  .prices{grid-template-columns:1fr}
+  .hero{padding-top:60px}
+}
+
+@media(max-width:500px){
+  .services{grid-template-columns:1fr}
+  section{padding:45px 15px}
+  .hero{padding-left:15px;padding-right:15px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="nav">
+    <div class="logo">Phuc<span>AI</span>PN</div>
+    <nav>
+      <a href="#home">Trang chủ</a>
+      <a href="#portfolio">Video</a>
+      <a href="#services">Dịch vụ</a>
+      <a href="#prices">Bảng giá</a>
+      <a href="#contact">Liên hệ</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section class="hero" id="home">
+  <div class="badge">🎬 DỊCH VỤ VIDEO AI</div>
+
+  <h1>
+    Biến ý tưởng của bạn<br>
+    thành <span>video ấn tượng</span>
+  </h1>
+
+  <p>
+    Nhận làm video AI, video quảng cáo, TikTok/Reels
+    và video game theo yêu cầu.
+  </p>
+
+  <div class="buttons">
+    <a class="btn" href="#contact">📩 Đặt video ngay</a>
+    <a class="btn alt" href="#portfolio">▶ Xem sản phẩm</a>
+  </div>
+</section>
+
+<section id="portfolio">
+
+  <div class="title">
+    <h2>🎬 Video đã thực hiện</h2>
+    <p>Một số sản phẩm mẫu của PhucAIPN</p>
+  </div>
+
+  <div class="filters">
+    <button class="filter active" onclick="filterVideo('all',this)">Tất cả</button>
+    <button class="filter" onclick="filterVideo('game',this)">Game</button>
+    <button class="filter" onclick="filterVideo('ads',this)">Quảng cáo</button>
+    <button class="filter" onclick="filterVideo('tiktok',this)">TikTok/Reels</button>
+    <button class="filter" onclick="filterVideo('ai',this)">AI Video</button>
+  </div>
+
+  <div class="grid">
+
+    <div class="card video game">
+      <div class="thumb">🎮</div>
+      <div class="card-body">
+        <h3>Video Game AI</h3>
+        <p>Video giới thiệu game và nhân vật.</p>
+      </div>
+    </div>
+
+    <div class="card video ads">
+      <div class="thumb">📢</div>
+      <div class="card-body">
+        <h3>Video quảng cáo</h3>
+        <p>Video quảng bá sản phẩm bằng AI.</p>
+      </div>
+    </div>
+
+    <div class="card video tiktok">
+      <div class="thumb">📱</div>
+      <div class="card-body">
+        <h3>TikTok / Reels</h3>
+        <p>Video ngắn bắt mắt cho mạng xã hội.</p>
+      </div>
+    </div>
+
+    <div class="card video ai">
+      <div class="thumb">🤖</div>
+      <div class="card-body">
+        <h3>AI Cinematic</h3>
+        <p>Video cinematic tạo bằng công nghệ AI.</p>
+      </div>
+    </div>
+
+    <div class="card video game">
+      <div class="thumb">⚔️</div>
+      <div class="card-body">
+        <h3>Trailer Game</h3>
+        <p>Trailer chiến đấu và giới thiệu nhân vật.</p>
+      </div>
+    </div>
+
+    <div class="card video ai">
+      <div class="thumb">✨</div>
+      <div class="card-body">
+        <h3>AI Story</h3>
+        <p>Kể chuyện bằng hình ảnh và video AI.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="services">
+
+  <div class="title">
+    <h2>🛠️ Dịch vụ</h2>
+    <p>Bạn cần video gì, mình có thể hỗ trợ</p>
+  </div>
+
+  <div class="services">
+
+    <div class="service">
+      <div class="icon">🤖</div>
+      <h3>Video AI</h3>
+      <p>Tạo video từ ý tưởng, hình ảnh hoặc kịch bản.</p>
+    </div>
+
+    <div class="service">
+      <div class="icon">📢</div>
+      <h3>Quảng cáo</h3>
+      <p>Video quảng cáo sản phẩm và thương hiệu.</p>
+    </div>
+
+    <div class="service">
+      <div class="icon">📱</div>
+      <h3>TikTok/Reels</h3>
+      <p>Video ngắn tối ưu cho mạng xã hội.</p>
+    </div>
+
+    <div class="service">
+      <div class="icon">🎮</div>
+      <h3>Video Game</h3>
+      <p>Trailer, cinematic và video giới thiệu game.</p>
+    </div>
+
+  </div>
+</section>
+
+<section id="prices">
+
+  <div class="title">
+    <h2>💰 Bảng giá tham khảo</h2>
+    <p>Giá có thể thay đổi theo độ dài và yêu cầu</p>
+  </div>
+
+  <div class="prices">
+
+    <div class="price">
+      <h3>Video cơ bản</h3>
+      <div class="money">Từ 100K</div>
+      <ul>
+        <li>✓ Video ngắn</li>
+        <li>✓ AI hình ảnh</li>
+        <li>✓ Chỉnh sửa cơ bản</li>
+      </ul>
+      <a class="btn" href="#contact">Đặt video</a>
+    </div>
+
+    <div class="price featured">
+      <h3>Video chuyên nghiệp</h3>
+      <div class="money">Từ 300K</div>
+      <ul>
+        <li>✓ Kịch bản</li>
+        <li>✓ Hình ảnh AI</li>
+        <li>✓ Animation</li>
+        <li>✓ Âm thanh</li>
+      </ul>
+      <a class="btn" href="#contact">Đặt video</a>
+    </div>
+
+    <div class="price">
+      <h3>Video theo yêu cầu</h3>
+      <div class="money">Liên hệ</div>
+      <ul>
+        <li>✓ Dự án riêng</li>
+        <li>✓ Nhiều cảnh</li>
+        <li>✓ Chỉnh sửa theo yêu cầu</li>
+      </ul>
+      <a class="btn" href="#contact">Liên hệ</a>
+    </div>
+
+  </div>
+</section>
+
+<section id="contact">
+
+  <div class="title">
+    <h2>📩 Đặt làm video</h2>
+    <p>Gửi yêu cầu, mình sẽ liên hệ lại</p>
+  </div>
+
+  <div class="contact">
+
+    <label>Họ tên</label>
+    <input id="name" placeholder="Nhập tên của bạn">
+
+    <label>Loại video</label>
+    <select id="type">
+      <option>Video AI</option>
+      <option>Video Game</option>
+      <option>Video quảng cáo</option>
+      <option>TikTok / Reels</option>
+    </select>
+
+    <label>Nội dung yêu cầu</label>
+    <textarea id="message" placeholder="Mô tả video bạn muốn làm..."></textarea>
+
+    <button class="submit" onclick="sendOrder()">
+      GỬI YÊU CẦU
+    </button>
+
+  </div>
+</section>
+
+</main>
+
+<footer>
+  © 2026 PhucAIPN — Dịch vụ làm video AI
+</footer>
+
+<script>
+function filterVideo(type,btn){
+  document.querySelectorAll('.filter').forEach(x=>{
+    x.classList.remove('active')
+  });
+  btn.classList.add('active');
+
+  document.querySelectorAll('.video').forEach(card=>{
+    if(type==='all' || card.classList.contains(type)){
+      card.style.display='block'
+    }else{
+      card.style.display='none'
+    }
+  });
+}
+
+function sendOrder(){
+  const name=document.getElementById('name').value.trim();
+  const type=document.getElementById('type').value;
+  const message=document.getElementById('message').value.trim();
+
+  if(!name || !message){
+    alert('Vui lòng nhập tên và nội dung yêu cầu nhé!');
+    return;
+  }
+
+  alert(
+    'Đã nhận yêu cầu của '+name+
+    '\\nLoại video: '+type+
+    '\\n\\nBước tiếp theo bạn có thể thêm Zalo/Facebook để khách gửi yêu cầu trực tiếp.'
+  );
+}
+</script>
+
+</body>
+  </html>
