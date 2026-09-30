@@ -517,3 +517,32 @@ footer{
     flex-direction:column;
   }
 }
+/* FIX VIDEO PORTFOLIO */
+.portfolio-card video,
+.portfolio-video,
+video{
+    width:100%;
+    aspect-ratio:16 / 9;
+    height:auto;
+    display:block;
+    object-fit:cover;
+    border-radius:18px;
+    background:#000;
+}
+
+/* Video dọc vẫn hiển thị đầy đủ */
+video[src*=".mp4"]{
+    object-fit:contain;
+}
+
+/* Khung video trên điện thoại */
+@media (max-width:600px){
+    .portfolio-card video,
+    .portfolio-video,
+    video{
+        width:100%;
+        aspect-ratio:16 / 9;
+        height:auto;
+        border-radius:16px;
+    }
+}
